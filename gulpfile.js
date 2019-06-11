@@ -8,7 +8,7 @@
  *
  * ********************************************************
  * ********************************************************/
-const localhost_domain = 'medicine.loc/build/';                         // локальный домен для обновления стр "browserSync"
+const localhost_domain = 'example.loc/' + 'build/';                    // локальный домен для обновления стр "browserSync"
 const root_dir = 'root_dir' + '/';                                      // создайте и поместите все в папку root_dir для удобства и запускайте из корня
 const root_sass = root_dir + 'app/sass/**/*.sass';                      // путь ко всем sass файлам
 const root_html_all = root_dir + 'app/html/*.html';                     // путь ко всем html файлам страниц
