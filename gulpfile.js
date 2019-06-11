@@ -8,18 +8,17 @@
  *
  * ********************************************************
  * ********************************************************/
-const localhost_domain = 'medicine.loc';                               // локальный домен для обновления стр "browserSync"
-const root_dir = 'root_dir';                                            // создайте и поместите все в папку root_dir для удобства и запускайте из корня
-const root_sass = root_dir + 'to/directory/sass/**/*.sass';             // путь ко всем sass файлам
-const root_html_all = root_dir + 'to/directory/page/html/*.html';       // путь ко всем html файлам страниц
-const root_js = root_dir + 'to/directory/js/**/*.js';                   // путь ко всем js файлам
-const root_libs = root_dir + 'to/directory/libs/**/*';                  // путь ко всем файлам библиотек
+const localhost_domain = 'medicine.loc/build/';                         // локальный домен для обновления стр "browserSync"
+const root_dir = 'root_dir' + '/';                                      // создайте и поместите все в папку root_dir для удобства и запускайте из корня
+const root_sass = root_dir + 'app/sass/**/*.sass';                      // путь ко всем sass файлам
+const root_html_all = root_dir + 'app/html/*.html';                     // путь ко всем html файлам страниц
+const root_js = root_dir + 'app/js/**/*.js';                            // путь ко всем js файлам
+const root_libs = root_dir + 'app/libs/**/*';                           // путь ко всем файлам библиотек
 
-
-const build_root_css = root_dir + 'catalog/to/css/build';               // путь в папку компиляции main.css
-const build_root_html = root_dir + 'catalog/to/html/build';             // путь в папку компиляции html
-const build_root_js = root_dir + 'catalog/to/js/build';                 // путь в папку компиляции html
-const build_root_libs = root_dir + 'catalog/to/js/build/libs';          // путь в папку компиляции html
+const build_root_css = root_dir + 'build/style';                        // путь в папку компиляции main.css
+const build_root_html = root_dir + 'build';                             // путь в папку компиляции html
+const build_root_js = root_dir + 'build/js';                            // путь в папку компиляции html
+const build_root_libs = root_dir + 'build/libs';                        // путь в папку компиляции html
 
 /***************----------------------------------------------------------------**************
  * Настройки выгрузки на сервер
@@ -89,10 +88,10 @@ gulp.task('libs:build', function () {
 
 // Наблюдение за файлами
 gulp.task('watch', ['sass', 'browser-sync'], function () {                                              // убрал browser-sync выше в коментарии
-    gulp.watch(root_sass, ['sass'], browserSync.reload);
-    gulp.watch(root_html_all, ['html:build'], browserSync.reload);
-    gulp.watch(root_js, ['js:build'], browserSync.reload);
-    gulp.watch(root_libs, ['libs:build'], browserSync.reload);
+    gulp.watch(root_sass, ['sass']);
+    gulp.watch(root_html_all, ['html:build']);
+    gulp.watch(root_js, ['js:build']);
+    gulp.watch(root_libs, ['libs:build']);
 });
 
 // Выгрузка изменений на хостинг
