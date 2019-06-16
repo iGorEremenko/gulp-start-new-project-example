@@ -8,10 +8,11 @@
  *
  * ********************************************************
  * ********************************************************/
-const localhost_domain = 'example.loc/' + 'build/';                    // локальный домен для обновления стр "browserSync"
+const localhost_domain = 'example.loc/' + 'build/';                     // локальный домен для обновления стр "browserSync"
 const root_dir = 'root_dir' + '/';                                      // создайте и поместите все в папку root_dir для удобства и запускайте из корня
 const root_sass = root_dir + 'app/sass/**/*.sass';                      // путь ко всем sass файлам
 const root_html_all = root_dir + 'app/html/*.html';                     // путь ко всем html файлам страниц
+const root_php_all = root_dir + 'app/html/*.php';                       // путь ко всем php файлам страниц
 const root_js = root_dir + 'app/js/**/*.js';                            // путь ко всем js файлам
 const root_libs = root_dir + 'app/libs/**/*';                           // путь ко всем файлам библиотек
 
@@ -74,6 +75,12 @@ gulp.task('html:build', function () {
         .pipe(gulp.dest(build_root_html))                                                               //Выплюнем их в папку build
 });
 
+// Сборка php
+gulp.task('php:build', function () {
+    gulp.src(root_php_all)                                                                             //Выберем файлы html
+        .pipe(gulp.dest(build_root_html))                                                               //Выплюнем их в папку build
+});
+
 // Сборка js
 gulp.task('js:build', function () {
     gulp.src(root_js)                                                                             //Выберем файлы html
@@ -90,6 +97,7 @@ gulp.task('libs:build', function () {
 gulp.task('watch', ['sass', 'browser-sync'], function () {                                              // убрал browser-sync выше в коментарии
     gulp.watch(root_sass, ['sass']);
     gulp.watch(root_html_all, ['html:build']);
+    gulp.watch(root_php_all, ['php:build']);
     gulp.watch(root_js, ['js:build']);
     gulp.watch(root_libs, ['libs:build']);
 });
